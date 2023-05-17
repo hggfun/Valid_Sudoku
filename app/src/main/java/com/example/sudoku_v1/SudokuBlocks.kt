@@ -1,5 +1,6 @@
 package com.example.sudoku_v1
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,18 +13,17 @@ import com.example.sudoku_v1.databinding.ActivitySudokuBlocksBinding
 
 public lateinit var currentTable: Array<IntArray>
 public val PINK: Int = -3827817
-public val DKGREEN: Int = -14857724
+public val DKGREEN: Int = -16756736
 public val LTBLUE: Int = -16744264
 
 class SudokuBlocks : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         val binding = ActivitySudokuBlocksBinding.inflate(layoutInflater)
         setContentView(binding.root)
         colorBaseButtons(binding)
         val layout = findViewById<TableLayout>(R.id.tableLayout)
-        binding.TextViewRestart.setBackgroundColor(Color.GRAY)
-        binding.TextView.setBackgroundColor(Color.GRAY)
         val a: Int = layout.childCount
         var xCord: Int = 0
         var yCord: Int = 0
@@ -31,7 +31,7 @@ class SudokuBlocks : AppCompatActivity() {
         val sudokuGenerator = SudokuGenerator()
         var sendTextView: TextView = binding.TextView1
         var fullTable: Array<IntArray> = sudokuGenerator.generate()
-        var table: Array<IntArray> = sudokuGenerator.makePartlyFilled(fullTable, 40)
+        var table: Array<IntArray> = sudokuGenerator.makePartlyFilled(fullTable, 20 * (mode + 1))
         currentTable = table.map { it.copyOf() }.toTypedArray()
         for (i in 0 until a) {
             val child: View = layout.getChildAt(i)
@@ -51,7 +51,7 @@ class SudokuBlocks : AppCompatActivity() {
             }
         }
         BlocksController(binding, table, fullTable, sendTextView).allListener()
-        binding.TextView.setOnClickListener() {
+        binding.check.setOnClickListener() {
             xCord = 0;
             yCord = 0
             for (i in 0 until a) {
@@ -71,10 +71,10 @@ class SudokuBlocks : AppCompatActivity() {
                 }
             }
         }
-        binding.TextViewRestart.setOnClickListener() {
+        binding.restart.setOnClickListener() {
             sendTextView = binding.TextView1
             fullTable = sudokuGenerator.generate()
-            table = sudokuGenerator.makePartlyFilled(fullTable, 18)
+            table = sudokuGenerator.makePartlyFilled(fullTable, 20 * (mode + 1))
             currentTable = table.map { it.copyOf() }.toTypedArray()
             xCord = 0
             yCord = 0
@@ -96,6 +96,10 @@ class SudokuBlocks : AppCompatActivity() {
                 }
             }
             BlocksController(binding, table, fullTable, sendTextView).allListener()
+        }
+        binding.back.setOnClickListener() {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }

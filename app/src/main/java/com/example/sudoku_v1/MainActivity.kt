@@ -15,21 +15,28 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlin.random.Random
 import com.example.sudoku_v1.databinding.ActivityMainBinding
 
-public var mode: Int = 0
+public var mode: Int = 1
 public var style: Int = 0
 public var new: Boolean = true
+public var showWrong: Boolean = false
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ButtonListener()
+        buttonListener()
+        supportActionBar?.hide()
     }
 
-    private fun ButtonListener() {
+    private fun buttonListener() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.button.setOnClickListener() {
+        (binding.root.background as AnimatedImageDrawable).start()
+        binding.checkGame.setOnClickListener() {
+            startActivity(Intent(this, SudokuImport::class.java))
+            finish()
+        }
+        binding.continueGame.setOnClickListener() {
             new = false
             if (style == 0) {
                 startActivity(Intent(this, SudokuStandart::class.java))
@@ -42,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
-        binding.button2.setOnClickListener() {
+        binding.newGame.setOnClickListener() {
             new = true
             if (style == 0) {
                 startActivity(Intent(this, SudokuStandart::class.java))
@@ -55,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
-        binding.button3.setOnClickListener() {
+        binding.settings.setOnClickListener() {
             startActivity(Intent(this, Settings::class.java))
             finish()
         }

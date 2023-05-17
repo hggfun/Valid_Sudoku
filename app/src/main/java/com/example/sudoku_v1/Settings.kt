@@ -15,9 +15,27 @@ class Settings : AppCompatActivity() {
     }
     private fun buttonController(binding: ActivitySettingsBinding) {
         binding.backSettings.setBackgroundColor(Color.LTGRAY)
-        binding.chooseTheme1.setBackgroundColor(Color.GREEN)
+        binding.chooseTheme1.setBackgroundColor(Color.LTGRAY)
         binding.chooseTheme2.setBackgroundColor(Color.LTGRAY)
         binding.chooseTheme3.setBackgroundColor(Color.LTGRAY)
+        binding.easy.setBackgroundColor(Color.LTGRAY)
+        binding.middle.setBackgroundColor(Color.LTGRAY)
+        binding.hard.setBackgroundColor(Color.LTGRAY)
+        when (style) {
+            0->binding.chooseTheme1.setBackgroundColor(Color.GREEN)
+            1->binding.chooseTheme2.setBackgroundColor(Color.GREEN)
+            2->binding.chooseTheme3.setBackgroundColor(Color.GREEN)
+        }
+        when (mode) {
+            0->binding.easy.setBackgroundColor(Color.GREEN)
+            1->binding.middle.setBackgroundColor(Color.GREEN)
+            2->binding.hard.setBackgroundColor(Color.GREEN)
+        }
+        if (showWrong) {
+            binding.switchShowWrong.setBackgroundColor(Color.GREEN)
+        } else {
+            binding.switchShowWrong.setBackgroundColor(Color.LTGRAY)
+        }
         binding.backSettings.setOnClickListener() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -39,6 +57,32 @@ class Settings : AppCompatActivity() {
             binding.chooseTheme1.setBackgroundColor(Color.LTGRAY)
             binding.chooseTheme2.setBackgroundColor(Color.LTGRAY)
             binding.chooseTheme3.setBackgroundColor(Color.GREEN)
+        }
+        binding.easy.setOnClickListener() {
+            mode = 0
+            binding.easy.setBackgroundColor(Color.GREEN)
+            binding.middle.setBackgroundColor(Color.LTGRAY)
+            binding.hard.setBackgroundColor(Color.LTGRAY)
+        }
+        binding.middle.setOnClickListener() {
+            mode = 1
+            binding.easy.setBackgroundColor(Color.LTGRAY)
+            binding.middle.setBackgroundColor(Color.GREEN)
+            binding.hard.setBackgroundColor(Color.LTGRAY)
+        }
+        binding.hard.setOnClickListener() {
+            mode = 2
+            binding.easy.setBackgroundColor(Color.LTGRAY)
+            binding.middle.setBackgroundColor(Color.LTGRAY)
+            binding.hard.setBackgroundColor(Color.GREEN)
+        }
+        binding.switchShowWrong.setOnClickListener() {
+            showWrong = !showWrong
+            if (showWrong) {
+                binding.switchShowWrong.setBackgroundColor(Color.GREEN)
+            } else {
+                binding.switchShowWrong.setBackgroundColor(Color.LTGRAY)
+            }
         }
     }
 }

@@ -624,6 +624,46 @@ class BlocksController (private val binding: ActivitySudokuBlocksBinding,
             currentTextView.setBackgroundColor(Color.MAGENTA)
             currentTable[xCord][yCord] = 9
         }
+        binding.hint.setOnClickListener() {
+            when(fullGrid[xCord][yCord]) {
+                1-> {
+                    currentTextView.setBackgroundColor(-3827817)
+                    currentTable[xCord][yCord] = 1
+                }
+                2-> {
+                    currentTextView.setBackgroundColor(-16744264)
+                    currentTable[xCord][yCord] = 2
+                }
+                3-> {
+                    currentTextView.setBackgroundColor(Color.BLUE)
+                    currentTable[xCord][yCord] = 3
+                }
+                4-> {
+                    currentTextView.setBackgroundColor(Color.CYAN)
+                    currentTable[xCord][yCord] = 4
+                }
+                5-> {
+                    currentTextView.setBackgroundColor(Color.DKGRAY)
+                    currentTable[xCord][yCord] = 5
+                }
+                6-> {
+                    currentTextView.setBackgroundColor(Color.GRAY)
+                    currentTable[xCord][yCord] = 6
+                }
+                7-> {
+                    currentTextView.setBackgroundColor(Color.GREEN)
+                    currentTable[xCord][yCord] = 7
+                }
+                8-> {
+                    currentTextView.setBackgroundColor(-16756736)
+                    currentTable[xCord][yCord] = 8
+                }
+                9-> {
+                    currentTextView.setBackgroundColor(Color.MAGENTA)
+                    currentTable[xCord][yCord] = 9
+                }
+            }
+        }
     }
 }
 

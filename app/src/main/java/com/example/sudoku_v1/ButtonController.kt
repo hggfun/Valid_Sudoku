@@ -593,7 +593,7 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush1.setOnClickListener() {
             currentTextView.text = "1"
-            if (fullGrid[xCord][yCord] != 1) {
+            if (fullGrid[xCord][yCord] != 1 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
@@ -601,7 +601,7 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush2.setOnClickListener() {
             currentTextView.text = "2"
-            if (fullGrid[xCord][yCord] != 2) {
+            if (fullGrid[xCord][yCord] != 2 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
@@ -609,7 +609,7 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush3.setOnClickListener() {
             currentTextView.text = "3"
-            if (fullGrid[xCord][yCord] != 3) {
+            if (fullGrid[xCord][yCord] != 3 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
@@ -617,7 +617,7 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush4.setOnClickListener() {
             currentTextView.text = "4"
-            if (fullGrid[xCord][yCord] != 4) {
+            if (fullGrid[xCord][yCord] != 4 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
@@ -625,7 +625,7 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush5.setOnClickListener() {
             currentTextView.text = "5"
-            if (fullGrid[xCord][yCord] != 5) {
+            if (fullGrid[xCord][yCord] != 5 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
@@ -633,7 +633,7 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush6.setOnClickListener() {
             currentTextView.text = "6"
-            if (fullGrid[xCord][yCord] != 6) {
+            if (fullGrid[xCord][yCord] != 6 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
@@ -641,7 +641,7 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush7.setOnClickListener() {
             currentTextView.text = "7"
-            if (fullGrid[xCord][yCord] != 7) {
+            if (fullGrid[xCord][yCord] != 7 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
@@ -649,7 +649,7 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush8.setOnClickListener() {
             currentTextView.text = "8"
-            if (fullGrid[xCord][yCord] != 8) {
+            if (fullGrid[xCord][yCord] != 8 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
@@ -657,11 +657,16 @@ class TextViewController (private val binding: ActivitySudokuStandartBinding,
         }
         binding.TextViewPush9.setOnClickListener() {
             currentTextView.text = "9"
-            if (fullGrid[xCord][yCord] != 9) {
+            if (fullGrid[xCord][yCord] != 9 && showWrong) {
                 currentTextView.setBackgroundColor(0xFFFF0000.toInt())
             } else {
                 currentTextView.setBackgroundColor(extraColor)
             }
+        }
+        binding.hint.setOnClickListener() {
+            if (fullGrid[xCord][yCord] != 0)
+            currentTextView.text = fullGrid[xCord][yCord].toString()
+            currentTextView.setBackgroundColor(extraColor)
         }
     }
 }

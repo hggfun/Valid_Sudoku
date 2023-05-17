@@ -75,4 +75,80 @@
         android:text="@string/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/switchShowWrong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="Отмечать неверный ход"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseTheme1" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchShowWrong">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="СЛОЖНОСТЬ"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/easy"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:text="легкая"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background" />
+
+            <Button
+                android:id="@+id/middle"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:text="средняя"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background" />
+
+            <Button
+                android:id="@+id/hard"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:text="сложная"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background" />
+        </TableRow>
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
