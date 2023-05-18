@@ -36,35 +36,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SudokuImport::class.java))
             finish()
         }
-        binding.continueGame.setOnClickListener() {
-            new = false
-            if (style == 0) {
-                startActivity(Intent(this, SudokuStandart::class.java))
-                finish()
-            } else if (style == 1) {
-                startActivity(Intent(this, SudokuSakura::class.java))
-                finish()
-            } else {
-                startActivity(Intent(this, SudokuBlocks::class.java))
-                finish()
-            }
-        }
         binding.newGame.setOnClickListener() {
             new = true
             if (style == 0) {
                 startActivity(Intent(this, SudokuStandart::class.java))
-                finish()
             } else if (style == 1) {
                 startActivity(Intent(this, SudokuSakura::class.java))
-                finish()
             } else {
                 startActivity(Intent(this, SudokuBlocks::class.java))
-                finish()
             }
         }
         binding.settings.setOnClickListener() {
             startActivity(Intent(this, Settings::class.java))
-            finish()
         }
     }
 }

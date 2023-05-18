@@ -10,19 +10,6 @@
 
 
     <Button
-        android:id="@+id/continueGame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="16dp"
-        android:text="ПРОДОЛЖИТЬ"
-        app:layout_constraintBottom_toTopOf="@+id/newGame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/newGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

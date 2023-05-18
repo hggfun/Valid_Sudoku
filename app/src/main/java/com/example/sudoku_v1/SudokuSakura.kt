@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.example.sudoku_v1.databinding.ActivitySudokuStandartBinding
 
 class SudokuSakura : AppCompatActivity() {
@@ -51,6 +52,7 @@ class SudokuSakura : AppCompatActivity() {
         }
         TextViewController(binding, table, fullTable, sendTextView, LTPINK, LTBLUE).allListener()
         binding.check.setOnClickListener() {
+            var correct: Boolean = true
             xCord = 0;
             yCord = 0
             for (i in 0 until a) {
@@ -61,6 +63,7 @@ class SudokuSakura : AppCompatActivity() {
                         if (btn is TextView) {
                             if (btn.text != fullTable[yCord][xCord].toString()) {
                                 btn.setBackgroundColor(Color.RED)
+                                correct = false
                             }
                             xCord++
                         }
@@ -68,6 +71,17 @@ class SudokuSakura : AppCompatActivity() {
                     yCord++
                     xCord = 0
                 }
+            }
+            if (correct) {
+                val dialog = AlertDialog.Builder(this)
+                dialog.setMessage("Судоку решено!")
+                dialog.setCancelable(false)
+                dialog.setPositiveButton(
+                    "OK"
+                ) { dialog1, _ ->
+                    dialog1.cancel()
+                }
+                dialog.show()
             }
         }
         binding.restart.setOnClickListener() {

@@ -8,9 +8,14 @@ import android.view.View
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.example.sudoku_v1.databinding.ActivitySudokuStandartBinding
 
 class SudokuStandart : AppCompatActivity() {
+
+    lateinit var fullTable: Array<IntArray>
+    lateinit var table: Array<IntArray>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
@@ -23,8 +28,8 @@ class SudokuStandart : AppCompatActivity() {
         var tmp: Int = 0;
         val sudokuGenerator = SudokuGenerator()
         var sendTextView: TextView = binding.TextView1
-        var fullTable: Array<IntArray> = sudokuGenerator.generate()
-        var table: Array<IntArray> = sudokuGenerator.makePartlyFilled(fullTable, 20 * (mode + 1))
+        fullTable = sudokuGenerator.generate()
+        table = sudokuGenerator.makePartlyFilled(fullTable, 20 * (mode + 1))
         for (i in 0 until a) {
             val child: View = layout.getChildAt(i)
             if (child is TableRow) {
@@ -46,8 +51,16 @@ class SudokuStandart : AppCompatActivity() {
                 xCord = 0
             }
         }
-        TextViewController(binding, table, fullTable, sendTextView, Color.LTGRAY, Color.DKGRAY).allListener()
+        TextViewController(
+            binding,
+            table,
+            fullTable,
+            sendTextView,
+            Color.LTGRAY,
+            Color.DKGRAY
+        ).allListener()
         binding.check.setOnClickListener() {
+            var correct: Boolean = true
             xCord = 0;
             yCord = 0
             for (i in 0 until a) {
@@ -58,6 +71,7 @@ class SudokuStandart : AppCompatActivity() {
                         if (btn is TextView) {
                             if (btn.text != fullTable[yCord][xCord].toString()) {
                                 btn.setBackgroundColor(Color.RED)
+                                correct = false
                             }
                             xCord++
                         }
@@ -65,6 +79,17 @@ class SudokuStandart : AppCompatActivity() {
                     yCord++
                     xCord = 0
                 }
+            }
+            if (correct) {
+                val dialog = AlertDialog.Builder(this)
+                dialog.setMessage("Судоку решено!")
+                dialog.setCancelable(false)
+                dialog.setPositiveButton(
+                    "OK"
+                ) { dialog1, _ ->
+                    dialog1.cancel()
+                }
+                dialog.show()
             }
         }
         binding.restart.setOnClickListener() {
@@ -95,7 +120,14 @@ class SudokuStandart : AppCompatActivity() {
                     xCord = 0
                 }
             }
-            TextViewController(binding, table, fullTable, sendTextView, Color.LTGRAY, Color.DKGRAY).allListener()
+            TextViewController(
+                binding,
+                table,
+                fullTable,
+                sendTextView,
+                Color.LTGRAY,
+                Color.DKGRAY
+            ).allListener()
         }
         binding.back.setOnClickListener() {
             startActivity(Intent(this, MainActivity::class.java))
